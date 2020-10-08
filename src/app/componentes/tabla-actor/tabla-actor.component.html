@@ -1,0 +1,23 @@
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">Foto</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let actor of actores'>
+      <th><img class="img-thumbnail" [src]='actor.foto' alt="foto del actora" height="150" width="150"></th>
+      <th>{{actor.nombre}} {{actor.apellido}}</th>
+      <th>{{actor.sexo}}</th>
+      <th>{{actor.fechaDeNacimiento}}</th>
+      <th *ngIf='estaSeleccionado(actor);else noSeleccionado'><button class="btn btn-danger" (click)='deseleccionarActor(actor)'>Deseleccionar</button></th>
+      <ng-template #noSeleccionado>
+        <th><button class="btn btn-primary" (click)='seleccionarActor(actor)'>Seleccionar</button></th>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Lista de Peliculas</h1>
+    <div class='table-wrap'>
+      <tabla-pelicula [peliSelBusqueda]='peliculaSeleccionada' (peliSelect)='mostrarDetalle($event)'></tabla-pelicula>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-danger" [disabled]='!detallePeli' (click)='borrarPeli()'>Eliminar Pelicula</button>
+    </div>
+    <div class="col-md-4">
+      <detalle-pelicula *ngIf='detallePeli === true' [peli]='peliculaSeleccionada'></detalle-pelicula>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <hr>
+</div>

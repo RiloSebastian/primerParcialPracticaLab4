@@ -1,0 +1,61 @@
+<div class="container-fluid h-100 mt-3">
+  <h1 class="text-uppercase" style="font-size: 60px">Alta de Pelicula</h1>
+  <div class="row">
+    <div class="col-md-7">
+      <form #ngForm='ngForm' [formGroup]='altaPeliculaForm'>
+        <!-- <div class="form-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" (change)='seleccionarFoto($event.target.files)' required>
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div> 
+        </div>
+        -->
+        <div class="form-group">
+          <label for="inputNombre">Titulo</label>
+          <input id="inputNombre" type="text" class="form-control" formControlName='nombre' required>
+          <p *ngIf='altaPeliculaForm.controls.nombre.dirty && altaPeliculaForm.controls.nombre.invalid' class="alert-danger">No se ha Ingresado un titulo</p>
+        </div>
+        <div class="form-group">
+          <label for="inputTipo">Genero</label>
+          <select id="inputTipo" class="custom-select" (change)='seleccionarTipo($event.target.value)'>
+            <option [value]='null' selected>Elegir Genero</option>
+            <option value="Acción">Acción</option>
+            <option value="Animacion">Animacion</option>
+            <option value="Ciencia ficción">Ciencia ficción</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Drama">Drama</option>
+            <option value="Documental">Documental</option>
+            <option value="Fantasía">Fantasía</option>
+            <option value="Historico">Historico</option>
+            <option value="Musical">Musical</option>
+            <option value="Romance">Romance</option>
+            <option value="suspenso">suspenso</option>
+            <option value="Terror">Terror</option>
+          </select>
+          <p *ngIf='altaPeliculaForm.controls.tipo.dirty && altaPeliculaForm.controls.tipo.invalid' class="alert-danger">No se ha seleccionado un genero</p>
+        </div>
+        <div class="form-group">
+          <label>Actores</label>
+          <ul *ngIf='altaPeliculaForm.controls.actores.value !== null'>
+            <li *ngFor='let actor of altaPeliculaForm.controls.actores.value'>{{actor.nombre}} {{actor.apellido}}</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="inputFechaEstreno">Fecha de Estreno</label>
+          <input id="inputFechaEstreno" type="date" class="form-control" (change)='seleccionarFecha($event)' [min]="fechaMin" [max]="fechaMax" required>
+          <p *ngIf='altaPeliculaForm.controls.fechaDeEstreno.dirty && altaPeliculaForm.controls.fechaDeEstreno.invalid' class="alert-danger">No se ha seleccionado una fecha de entrega</p>
+        </div>
+        <div class="form-group">
+          <label for="inputCantEspectadores">Cantidad De Espectadores</label>
+          <input id="inputCantEspectadores" type="number" class="form-control" formControlName='cantidadDePublico' min="1" required>
+          <p *ngIf='altaPeliculaForm.controls.cantidadDePublico.dirty && altaPeliculaForm.controls.cantidadDePublico.invalid' class="alert-danger">No se ha provisto de una cantidad de espectadores</p>
+        </div>
+        <button type="submit" class="btn btn-success" (click)='guardarPelicula()'>Guardar Pelicula</button>
+        <p class="alert-danger text-center" *ngIf='mensajeError !== null'>{{mensajeError}}</p>
+      </form>
+    </div>
+    <div class="col-md-5 overflow">
+      <tabla-actor [actores]='listaActores' (actoresSel)='altaPeliculaForm.controls.actores.setValue($event)'></tabla-actor>
+    </div>
+  </div>
+</div>

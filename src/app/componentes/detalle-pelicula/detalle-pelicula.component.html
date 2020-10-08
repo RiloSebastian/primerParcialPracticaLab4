@@ -1,0 +1,19 @@
+<div class="card mb-3">
+  <img [src]="peli.fotoDeLaPelicula" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{peli.nombre}}</h5>
+    <p class="card-text">Genero: {{peli.tipo}}</p>
+    <div class="row">
+    	<div class="col-md-3">
+    		Actores
+    	</div>
+    	<div class="col-md-auto">
+    		<ul>
+    			<li *ngFor='let actor of peli.actores'>{{actor.nombre}} {{actor.apellido}}</li>
+    		</ul>
+    	</div>
+    </div>
+    <p class="card-text">Fecha de estreno: {{peli.fechaDeEstreno}}</p>
+    <p class="card-text">Publico: {{peli.cantidadDePublico}} espectadores</p>
+  </div>
+</div>

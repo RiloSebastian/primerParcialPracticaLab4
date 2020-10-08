@@ -1,0 +1,18 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Imagen</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Genero</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pelicula of peliculas' (click)='seleccionarPelicula(pelicula)'>
+        <th><img class="img-thumbnail" [src]='pelicula.fotoDeLaPelicula' alt="foto de la pelicula" height="150" width="150"></th>
+        <th>{{pelicula.nombre}}</th>
+        <th>{{pelicula.tipo}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
