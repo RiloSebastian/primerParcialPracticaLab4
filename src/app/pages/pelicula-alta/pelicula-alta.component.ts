@@ -15,7 +15,7 @@ export class PeliculaAltaComponent implements OnInit, OnDestroy {
 		fechaDeEstreno: new FormControl(null, [Validators.required]),
 		tipo: new FormControl(null, [Validators.required]),
 		cantidadDePublico: new FormControl(null, [Validators.required]),
-		actores: new FormControl(null),
+		actores: new FormControl(null, [Validators.required]),
 		fotoDeLaPelicula: new FormControl(null),
 	});
 	public mensajeError: string = null;

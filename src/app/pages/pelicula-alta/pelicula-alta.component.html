@@ -36,9 +36,8 @@
         </div>
         <div class="form-group">
           <label>Actores</label>
-          <ul *ngIf='altaPeliculaForm.controls.actores.value !== null'>
-            <li *ngFor='let actor of altaPeliculaForm.controls.actores.value'>{{actor.nombre}} {{actor.apellido}}</li>
-          </ul>
+          <p *ngIf='altaPeliculaForm.controls.actores.value !== null'>{{altaPeliculaForm.controls.actores.value.nombre}} {{altaPeliculaForm.controls.actores.value.apellido}}</p>
+          <p *ngIf='ngForm.submitted && altaPeliculaForm.controls.actores.invalid' class="alert-danger">No se ha seleccionado un actor</p>
         </div>
         <div class="form-group">
           <label for="inputFechaEstreno">Fecha de Estreno</label>

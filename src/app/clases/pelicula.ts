@@ -7,7 +7,7 @@ export class Pelicula {
 	public fechaDeEstreno: string;
 	public cantidadDePublico: number;
 	public fotoDeLaPelicula: string;
-	public actores: Array<Actor>;
+	public actores: Actor;
 
 	constructor(nombre: string, tipo: string, fechaDeEstreno: string, cantidadDePublico: number, fotoDeLaPelicula: string, actores:Array<Actor>, id?: string) {
 		this.nombre = nombre;
