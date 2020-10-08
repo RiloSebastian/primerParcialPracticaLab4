@@ -8,30 +8,12 @@ import { Actor } from '../../clases/actor'
 })
 export class TablaActorComponent implements OnInit {
 	@Input() actores: Array<Actor>
-	@Output() actoresSel: EventEmitter<Array<Actor>> = new EventEmitter<Array<Actor>>();
-	public arrAux: Array<Actor> = [];
+	@Output() actoresSel: EventEmitter<Actor> = new EventEmitter<Actor>();
 	constructor() { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	public seleccionarActor(actor: Actor) {
-		this.arrAux.push(actor);
-		this.actoresSel.emit(this.arrAux);
+		this.actoresSel.emit(actor);
 	}
-
-	public deseleccionarActor(actor: Actor){
-		let indice = this.arrAux.findIndex(x => x.id === actor.id);
-		this.arrAux.splice(indice,1);
-		this.actoresSel.emit(this.arrAux);
-	}
-
-	public estaSeleccionado(actor:Actor){
-		if(this.arrAux.findIndex(x => x.id === actor.id) !== -1){
-			return true;
-		} else{
-			return false;
-		}
-	}
-
-
 }

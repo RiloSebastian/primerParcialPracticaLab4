@@ -1,1 +1,22 @@
-<p>actor-listado works!</p>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Lista de Actores</h1>
+    <div class='table-wrap'>
+      <tabla-actor [actores]='actores' (actoresSel)='mostrarDetalle($event)'></tabla-actor>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-danger" [disabled]='!detallePeli' (click)='borrarPeli()'>Eliminar Pelicula</button>
+    </div>
+    <div class="col-md-4">
+      <detalle-actor *ngIf='detallePeli === true' [actor]='actorSelecccionado'></detalle-actor>
+    </div>
+    <div class="col-md-4">
+    	<edicion-actor *ngIf='detallePeli === true' [actor]='actorSelecccionado'></edicion-actor>
+    </div>
+  </div>
+  <hr>
+</div>

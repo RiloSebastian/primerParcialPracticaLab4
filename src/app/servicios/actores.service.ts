@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
+import { Actor } from '../clases/actor';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +32,23 @@ export class ActoresService {
     this.firestore.collection('actores').doc(id).delete();
   }
 
+  public editarActor(actor: Actor){
+    return this.firestore.collection('actores').doc(actor.id).set({
+      nombre: actor.nombre,
+      apellido: actor.apellido,
+      fechaDeNacimiento: actor.fechaDeNacimiento,
+      pais: actor.pais,
+      sexo: actor.sexo,
+      foto: actor.foto,
+    },{merge: true});
+  }
+
   public agregarActor(pelicula) {
     return this.firestore.collection('actores').add({
       nombre: pelicula.nombre,
       apellido: pelicula.apellido,
       fechaDeNacimiento: pelicula.fechaDeNacimiento,
+      pais: pelicula.pais,
       sexo: pelicula.sexo,
       foto: pelicula.foto,
     });

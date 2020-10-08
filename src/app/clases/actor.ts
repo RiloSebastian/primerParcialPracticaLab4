@@ -1,5 +1,5 @@
 export class Actor {
-	public id?: number;
+	public id?: string;
 	public nombre: string;
 	public apellido: string;
 	public sexo: string;
@@ -7,7 +7,7 @@ export class Actor {
 	public fechaDeNacimiento: string;
 	public foto: string;
 
-	constructor(nombre: string, apellido: string, sexo: string, fechaDeNacimiento: string, pais: string, foto: string, id?: number) {
+	constructor(nombre: string, apellido: string, sexo: string, fechaDeNacimiento: string, pais: string, foto: string, id?: string) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.sexo = sexo;

@@ -1,0 +1,35 @@
+<form #ngForm='ngForm' [formGroup]='edicionActorForm'>
+  <div class="form-group">
+    <label for="inputNombre">Nombre</label>
+    <input id="inputNombre" type="text" class="form-control" formControlName='nombre' required>
+    <p *ngIf='edicionActorForm.controls.nombre.dirty && edicionActorForm.controls.nombre.invalid' class="alert-danger">No se ha Ingresado un Nombre</p>
+  </div>
+  <div class="form-group">
+    <label for="inputNombre">Apellido</label>
+    <input id="inputNombre" type="text" class="form-control" formControlName='apellido' required>
+    <p *ngIf='edicionActorForm.controls.apellido.dirty && edicionActorForm.controls.apellido.invalid' class="alert-danger">No se ha Ingresado un Apellido</p>
+  </div>
+  <div class="form-group">
+    <label for="inputTipo">Genero</label>
+    <select id="inputTipo" class="custom-select" [value]='edicionActorForm.controls.sexo.value' (change)='seleccionarTipo($event.target.value)'>
+      <option [value]='null' selected>Elegir Genero</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Masculino">Masculino</option>
+    </select>
+    <p *ngIf='edicionActorForm.controls.sexo.dirty && edicionActorForm.controls.sexo.invalid' class="alert-danger">No se ha seleccionado un genero</p>
+  </div>
+  <div class="form-group">
+    <label>Pais</label>
+    <select id="inputTipo" class="custom-select" [value]='edicionActorForm.controls.pais.value' (change)='seleccionarPais($event.target.value)'>
+      <option [value]='null' selected>Elegir Nacionalidad</option>
+      <option *ngFor='let pais of listapaises' [value]="pais.name">{{pais.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="inputFechaEstreno">Fecha de Nacimiento</label>
+    <input id="inputFechaEstreno" type="date" class="form-control" (change)='seleccionarFecha($event)' [min]="fechaMin" [max]="fechaMax" required>
+    <p *ngIf='edicionActorForm.controls.fechaDeNacimiento.dirty && edicionActorForm.controls.fechaDeNacimiento.invalid' class="alert-danger">No se ha seleccionado una fecha de Nacimiento</p>
+  </div>
+  <button type="submit" class="btn btn-success" (click)='guardarActor()'>Guardar Actor</button>
+  <p class="alert-danger text-center" *ngIf='mensajeError !== null'>{{mensajeError}}</p>
+</form>
