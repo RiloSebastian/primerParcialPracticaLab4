@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pais of paises' (click)='seleccionarPais(pais)'>
+        <th><img class="img-thumbnail" [src]='pais.flag' alt="foto de la pelicula" height="150" width="150"></th>
+        <th>{{pais.name}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>

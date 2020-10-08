@@ -26,4 +26,19 @@ export class ActoresService {
     //return this.http.get(this.mockApi).toPromise();
     return this.firestore.collection('actores').get().toPromise();
   }
+
+  public borrarActor(id: string) {
+    this.firestore.collection('actores').doc(id).delete();
+  }
+
+  public agregarActor(pelicula) {
+    return this.firestore.collection('actores').add({
+      nombre: pelicula.nombre,
+      apellido: pelicula.apellido,
+      fechaDeNacimiento: pelicula.fechaDeNacimiento,
+      sexo: pelicula.sexo,
+      foto: pelicula.foto,
+    });
+  }
+
 }

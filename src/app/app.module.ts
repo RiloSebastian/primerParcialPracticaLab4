@@ -19,6 +19,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
+import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
     DetallePeliculaComponent,
     TablaActorComponent,
     TablaPeliculaComponent,
-    CabeceraComponent
+    CabeceraComponent,
+    TablaPaisesComponent
   ],
   imports: [
     BrowserModule,
