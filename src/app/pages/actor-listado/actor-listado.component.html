@@ -9,7 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <button class="btn btn-danger" [disabled]='!detallePeli' (click)='borrarPeli()'>Eliminar Pelicula</button>
+      <eliminar-actor *ngIf='detallePeli' [actorSelecccionado]='actorSelecccionado' (eliminado)='detallePeli = $event'></eliminar-actor>
     </div>
     <div class="col-md-4">
       <detalle-actor *ngIf='detallePeli === true' [actor]='actorSelecccionado'></detalle-actor>

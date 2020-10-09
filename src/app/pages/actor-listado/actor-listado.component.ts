@@ -33,11 +33,6 @@ export class ActorListadoComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	borrarPeli() {
-		this.actoresServ.borrarActor(this.actorSelecccionado.id);
-		this.detallePeli = false;
-	}
-
 	ngOnDestroy(): void {
 		if (this.subAct !== null) {
 			this.subAct.unsubscribe();

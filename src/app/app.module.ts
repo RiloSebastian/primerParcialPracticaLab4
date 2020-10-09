@@ -22,6 +22,7 @@ import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 import { DetalleActorComponent } from './componentes/detalle-actor/detalle-actor.component';
 import { EdicionActorComponent } from './componentes/edicion-actor/edicion-actor.component';
+import { EliminarActorComponent } from './componentes/eliminar-actor/eliminar-actor.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EdicionActorComponent } from './componentes/edicion-actor/edicion-actor
     CabeceraComponent,
     TablaPaisesComponent,
     DetalleActorComponent,
-    EdicionActorComponent
+    EdicionActorComponent,
+    EliminarActorComponent
   ],
   imports: [
     BrowserModule,
