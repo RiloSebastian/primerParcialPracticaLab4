@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="display-3">Lista de Peliculas</h1>
     <div class='table-wrap'>
-      <tabla-pelicula [peliSelBusqueda]='peliculaSeleccionada' (peliSelect)='mostrarDetalle($event)'></tabla-pelicula>
+      <tabla-pelicula [peliculas]='peliculas' (peliSelect)='mostrarDetalle($event)'></tabla-pelicula>
     </div>
   </div>
 </div>

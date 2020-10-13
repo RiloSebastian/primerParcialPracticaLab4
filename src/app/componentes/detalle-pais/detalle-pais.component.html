@@ -1,0 +1,10 @@
+<div *ngIf='pais !== null' class="card mb-3">
+  <img [src]="pais.flag" class="card-img-top" alt="bandera del pais">
+  <div class="card-body">
+    <h5 class="card-title">{{pais.name}}</h5>
+    <p class="card-text">Capital: {{pais.capital}}</p>
+    <p class="card-text">region: {{pais.region}}</p>
+    <p class="card-text">Area: {{pais.area}}km2</p>
+    <p class="card-text">Poblacion: {{pais.population}} habitantes</p>
+  </div>
+</div>

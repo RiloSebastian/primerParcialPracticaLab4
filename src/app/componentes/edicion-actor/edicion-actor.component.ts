@@ -10,7 +10,12 @@ import { Actor } from '../../clases/actor';
 	styleUrls: ['./edicion-actor.component.css']
 })
 export class EdicionActorComponent implements OnInit {
-	@Input() actor: Actor;
+	@Output() modificado: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Input() set actorE(actor: Actor) {
+		this.actor = actor;
+		this.inicializarFormulario();
+	};
+	public actor: Actor = null;
 	public edicionActorForm: FormGroup = new FormGroup({
 		id: new FormControl(null),
 		nombre: new FormControl(null, [Validators.required]),
@@ -29,6 +34,14 @@ export class EdicionActorComponent implements OnInit {
 	constructor(private paises: PaisesService, private actores: ActoresService) { }
 
 	ngOnInit(): void {
+		this.generarFechas();
+		this.subAct = this.paises.traerTodosTiempoReal().subscribe(snap => {
+			this.listapaises = snap as Array<any>;
+			console.log(this.listapaises);
+		});
+	}
+
+	public inicializarFormulario() {
 		this.edicionActorForm.controls.id.setValue(this.actor.id);
 		this.edicionActorForm.controls.pais.setValue(this.actor.pais);
 		this.edicionActorForm.controls.nombre.setValue(this.actor.nombre);
@@ -36,12 +49,6 @@ export class EdicionActorComponent implements OnInit {
 		this.edicionActorForm.controls.foto.setValue(this.actor.foto);
 		this.edicionActorForm.controls.sexo.setValue(this.actor.sexo);
 		this.edicionActorForm.controls.fechaDeNacimiento.setValue(this.actor.fechaDeNacimiento);
-
-		this.generarFechas();
-		this.subAct = this.paises.traerTodosTiempoReal().subscribe(snap => {
-			this.listapaises = snap as Array<any>;
-			console.log(this.listapaises);
-		});
 	}
 
 	public generarFechas() {
@@ -72,7 +79,7 @@ export class EdicionActorComponent implements OnInit {
 			console.log('es valida');
 			console.log(this.edicionActorForm.value);
 			this.actores.editarActor(this.edicionActorForm.value).then(() => {
-
+				this.modificado.emit(false);
 			}).catch(() => {
 				this.mensajeError = 'ha ocurrido un error durante la carga del actor';
 			})

@@ -21,6 +21,18 @@ export class PeliculasService {
 		return this.firestore.collection('peliculas').get().toPromise();
 	}
 
+	public traerPorActor(nombre, apellido){
+		return this.traerTodos().then(snap =>{
+			return snap.docs.filter(doc =>{
+				if (doc.data().actores.nombre === nombre && doc.data().actores.apellido === apellido){
+					return true;
+				} else{
+					return false;
+				}
+			});
+		});
+	}
+
 	public borrarPelicula(id: string) {
 		this.firestore.collection('peliculas').doc(id).delete();
 	}

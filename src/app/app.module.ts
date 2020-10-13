@@ -23,6 +23,8 @@ import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.co
 import { DetalleActorComponent } from './componentes/detalle-actor/detalle-actor.component';
 import { EdicionActorComponent } from './componentes/edicion-actor/edicion-actor.component';
 import { EliminarActorComponent } from './componentes/eliminar-actor/eliminar-actor.component';
+import { ActorPeliculaComponent } from './pages/actor-pelicula/actor-pelicula.component';
+import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { EliminarActorComponent } from './componentes/eliminar-actor/eliminar-ac
     TablaPaisesComponent,
     DetalleActorComponent,
     EdicionActorComponent,
-    EliminarActorComponent
+    EliminarActorComponent,
+    ActorPeliculaComponent,
+    DetallePaisComponent
   ],
   imports: [
     BrowserModule,

@@ -9,13 +9,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <eliminar-actor *ngIf='detallePeli' [actorSelecccionado]='actorSelecccionado' (eliminado)='detallePeli = $event'></eliminar-actor>
+      <tabla-pelicula *ngIf='detallePeli' [peliculas]='listaPeliculas'></tabla-pelicula>
     </div>
     <div class="col-md-4">
-      <detalle-actor *ngIf='detallePeli === true' [actor]='actorSelecccionado'></detalle-actor>
+      <detalle-pais *ngIf='detallePeli' [pais]='detallePais'></detalle-pais>
     </div>
     <div class="col-md-4">
-    	<edicion-actor *ngIf='detallePeli === true' [actorE]='actorSelecccionado' (modificado)='detallePeli = $event'></edicion-actor>
+      <detalle-actor *ngIf='detallePeli' [actor]='actorSelecccionado'></detalle-actor>
     </div>
   </div>
   <hr>

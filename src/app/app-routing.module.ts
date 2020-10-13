@@ -6,6 +6,7 @@ import { PeliculaAltaComponent } from './pages/pelicula-alta/pelicula-alta.compo
 import { ActorListadoComponent } from './pages/actor-listado/actor-listado.component';
 import { ActorAltaComponent } from './pages/actor-alta/actor-alta.component';
 import { PeliculaListadoComponent } from './pages/pelicula-listado/pelicula-listado.component';
+import { ActorPeliculaComponent } from './pages/actor-pelicula/actor-pelicula.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
 	{ path:'Peliculas/Listado', component:PeliculaListadoComponent },
 	{ path:'Actor/Alta', component:ActorAltaComponent },
 	{ path:'Actor/Listado', component:ActorListadoComponent },
+	{ path:'Actor/Pelicula', component:ActorPeliculaComponent },
 ];
 
 @NgModule({
