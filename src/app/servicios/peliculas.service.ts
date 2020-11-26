@@ -33,6 +33,18 @@ export class PeliculasService {
 		});
 	}
 
+	public traerPorPais(pais){
+		return this.traerTodos().then(snap =>{
+			return snap.docs.filter(doc =>{
+				if (doc.data().paisDeOrigen && doc.data().paisDeOrigen === pais){
+					return true;
+				} else{
+					return false;
+				}
+			});
+		});
+	}
+
 	public borrarPelicula(id: string) {
 		this.firestore.collection('peliculas').doc(id).delete();
 	}
@@ -44,6 +56,7 @@ export class PeliculasService {
 			fechaDeEstreno: pelicula.fechaDeEstreno,
 			cantidadDePublico: pelicula.cantidadDePublico,
 			fotoDeLaPelicula: pelicula.fotoDeLaPelicula,
+			paisDeOrigen: pelicula.paisDeOrigen,
 			actores: pelicula.actores
 		});
 	}

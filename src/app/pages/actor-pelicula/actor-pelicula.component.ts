@@ -14,7 +14,7 @@ export class ActorPeliculaComponent implements OnInit, OnDestroy {
 	public detallePeli: boolean = false;
 	public actorSelecccionado: Actor = null;
 	public actores: Array<Actor> = [];
-	public listaPeliculas: Array<Pelicula> = [];
+	public listaPeliculas: Array<any> = [];
 	public detallePais: any = null;
 	public subAct = null
 	constructor(private actoresServ: ActoresService, private peliculasServ: PeliculasService, private paisesServ: PaisesService) { }
@@ -36,7 +36,7 @@ export class ActorPeliculaComponent implements OnInit, OnDestroy {
 				this.listaPeliculas = snap.map(docs => {
 					const x = docs.data();
 					x['id'] = docs.id;
-					return { ...x as Pelicula };
+					return { ...x as Object };
 				});
 			}).then(() => {
 				return this.paisesServ.traerUno(actor.pais);

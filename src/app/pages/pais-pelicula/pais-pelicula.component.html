@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Lista de Actores</h1>
+    <div class='table-wrap'>
+      <tabla-paises [paises]='listaPaises' (paisSel)='mostrarDetalle($event)'></tabla-paises>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+    	<tabla-pelicula *ngIf='detallePaisBool' [peliculas]='listaPeliculas'></tabla-pelicula>
+    </div>
+    <div class="col-md-4">
+      <tabla-actor *ngIf='detallePaisBool' [actores]='actores'></tabla-actor>
+    </div>
+    <div class="col-md-4">
+      <detalle-pais *ngIf='detallePaisBool' [pais]='detallePais'></detalle-pais>
+    </div>
+  </div>
+  <hr>
+</div>

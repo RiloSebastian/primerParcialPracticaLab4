@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActoresService } from '../../servicios/actores.service';
 import { PeliculasService } from '../../servicios/peliculas.service';
+import { PaisesService } from '../../servicios/paises.service';
 import { Actor } from '../../clases/actor';
 
 @Component({
@@ -17,14 +18,18 @@ export class PeliculaAltaComponent implements OnInit, OnDestroy {
 		cantidadDePublico: new FormControl(null, [Validators.required]),
 		actores: new FormControl(null, [Validators.required]),
 		fotoDeLaPelicula: new FormControl(null),
+		paisDeOrigen: new FormControl(null, [Validators.required]),
 	});
 	public mensajeError: string = null;
+	public mensajeExito: string = null;
 	public spinner: boolean = false;
 	public fechaMin: string = null;
 	public fechaMax: string = null;
 	public listaActores: Array<Actor> = null;
+	public listaPaises: Array<any> = null;
 	public subAct = null;
-	constructor(private peliculas: PeliculasService, private actores: ActoresService) { }
+	public subPel = null;
+	constructor(private peliculas: PeliculasService, private actores: ActoresService, private paises: PaisesService) { }
 
 	ngOnInit(): void {
 		this.generarFechas();
@@ -34,6 +39,9 @@ export class PeliculaAltaComponent implements OnInit, OnDestroy {
 				x['id'] = actor.payload.doc.id
 				return { ...x as Actor };
 			});
+		});
+		this.paises.traerTodos().then(snap => {
+			this.listaPaises = snap as Array<any>;
 		});
 	}
 
@@ -54,17 +62,24 @@ export class PeliculaAltaComponent implements OnInit, OnDestroy {
 		this.altaPeliculaForm.controls.fechaDeEstreno.setValue(new Date(fechaAux).toLocaleDateString());
 	}
 
-	guardarPelicula(){
+	guardarPelicula() {
 		console.log(this.altaPeliculaForm.controls)
-		if(this.altaPeliculaForm.valid){
+		if (this.altaPeliculaForm.valid) {
 			console.log('es valida');
-			this.peliculas.agregarPelicula(this.altaPeliculaForm.value).then(()=>{
-
-			}).catch(()=>{
+			this.peliculas.agregarPelicula(this.altaPeliculaForm.value).then(() => {
+				this.mensajeExito = 'pelicula dada de alta!';
+			}).catch(() => {
 				this.mensajeError = 'ha ocurrido un error durante la carga de la pelicula';
+			}).finally(() => {
+				setTimeout(() => {
+					this.mensajeError = null;
+				}, 3000)
 			})
-		} else{
+		} else {
 			this.mensajeError = 'el formulario no es valido';
+			setTimeout(() => {
+				this.mensajeError = null;
+			}, 3000)
 		}
 	}
 

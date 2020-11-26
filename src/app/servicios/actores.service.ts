@@ -32,6 +32,18 @@ export class ActoresService {
     this.firestore.collection('actores').doc(id).delete();
   }
 
+  public traerPorPais(pais){
+    return this.traerTodos().then(snap =>{
+      return snap.docs.filter(doc =>{
+        if (doc.data().pais && doc.data().pais === pais){
+          return true;
+        } else{
+          return false;
+        }
+      });
+    });
+  }
+
   public editarActor(actor: Actor){
     return this.firestore.collection('actores').doc(actor.id).set({
       nombre: actor.nombre,

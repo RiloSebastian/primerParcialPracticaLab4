@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BienvenidoComponent } from './pages/bienvenido/bienvenido.component';
 import { BusquedaComponent } from './pages/busqueda/busqueda.component';
 import { PeliculaAltaComponent } from './pages/pelicula-alta/pelicula-alta.component';
@@ -25,6 +26,8 @@ import { EdicionActorComponent } from './componentes/edicion-actor/edicion-actor
 import { EliminarActorComponent } from './componentes/eliminar-actor/eliminar-actor.component';
 import { ActorPeliculaComponent } from './pages/actor-pelicula/actor-pelicula.component';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
+import { PaisPeliculaComponent } from './pages/pais-pelicula/pais-pelicula.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.co
     EdicionActorComponent,
     EliminarActorComponent,
     ActorPeliculaComponent,
-    DetallePaisComponent
+    DetallePaisComponent,
+    PaisPeliculaComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,7 @@ import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
